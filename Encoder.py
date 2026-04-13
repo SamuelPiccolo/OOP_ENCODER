@@ -1,11 +1,140 @@
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+import sys
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+class Image:
+    def __init__(self, input_file, output_file):
+        self.a = r"""
+        Amsterdam
+                           AAAAABBBBBBBAAAAA
+                      AAAAABBBBCCCCCCCCBBBBAAAAA
+                 AAAAABBBCCCDDDEEEEEEEDDDCCBBBAAAAA
+            AAAABBBCCCDDDEEEFFFFGGGGGGFFFFEEEDDDCCBBBAAA
+        AAAABBBCCCDDDEEEFFFFGGGHHHHHHGGGFFFFEEEDDDCCBBBAAA
+     AAABBBCCCDDDEEEFFFFGGGHHHIIIIIIIIHHHGGGFFFFEEEDDDCCBBBAA
+   AABBBCCCDDDEEEFFFFGGGHHHIIJJJJJJJJJJIIHHHGGGFFFFEEEDDDCCBBAA
+  ABBBCCCDDDEEEFFFFGGGHHHIIJJKKKKLLLLKKKKJJIIHHHGGGFFFFEEEDCCBBBA
+ ABBCCCDDDEEEFFFFGGGHHHIIJJKKKLLLLMMMMLLLLKKKJJIIHHHGGGFFFFEEEDCCB
+ABBCCCDDDEEEFFFFGGGHHHIIJJKKKLLLMMMMNNNNMMMMLLLKKKJJIIHHHGGGFFFFEE
+BBCCCDDDEEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOONNNMMMKKKJJIIHHHGGGFFFFEE
+BCCCDDDEEEFFFFGGGHHHIIJJKKKLLLMMMNNNNOOOOOONNNMMMKKKJJIIHHHGGGFFF
+CCDDDEEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOOOOOOONNNMMMKKKJJIIHHHGGGFF
+DDDEEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOPPPPPOOOONNNMMMKKKJJIIHHHGGG
+EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOPPQQQQQQPPOOOONNNMMMKKKJJIIHHH
+EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOPPQQQQQQQQPPPOOOONNNMMMKKKJJ
+EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOPPQQQQRRQQQQPPPOOOONNNMMM
+EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOPPQQQRRRRQQQPPPOOOONNN
+EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOPPQQRRRRRRQQPPPOOOO
+EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOPPQQRRRRRRQQPP
+EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOPPQQQQRRQQQQ
+EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOPPQQQQQQQQ
+EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOOPPQQQQQQ
+EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOO
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~   ~~~      ~~~~      ~~~~~~        ~~~~      ~~~~     ~~~
+~~         ~~~~~~~~~~         ~~~~~~~~~~~~~~         ~~~~~~~~
+~~   ~~~~~~~~~~~~~~~~   ~~~~~~~~~~~~~~~~   ~~~~~~~~~~~~~~~~  ~
+~~~~~~~~~~~~~   ~~~~~~~~~~~~~~~~   ~~~~~~~~~~~~~~~~   ~~~~~~~~
+         AAAA      AAAA        AAAA        AAAA       AAAA
+       AAAAAAAA  AAAAAAAA    AAAAAAAA    AAAAAAAA   AAAAAAAA
+      AAABBBBBBAAABBBBBBAA  AAABBBBBBAA  AAABBBBBBAAABBBBBBAA
+      AABCCCCCBBCCCCCBBCCA  AABCCCCCBBCCA AABCCCCCBBCCCCCBBCA
+      AABCDDDDBBCDDDDBBCCA  AABCDDDDBBCCA AABCDDDDBBCDDDDBBCA
+      AABCEEEEBBCEEEEBBCCA  AABCEEEEBBCCA AABCEEEEBBCEEEEBBCA
+      AABCFGGGBBCFGGGBBCCA  AABCFGGGBBCCA AABCFGGGBBCFGGGBBCA
+      AABCHHHHBBCHHHHBBCCA  AABCHHHHBBCCA AABCHHHHBBCHHHHBBCA
+      AABCHIHHBBCHIHHBBCCA  AABCHIHHBBCCA AABCHIHHBBCHIHHBBCA
+      AABCHIIBBCHIIBBCCA    AABCHIIBBCCA   AABCHIIBBCHIIBBCA
+      AABCCBBCCBBCCBBCCA    AABCCBBCCBCCA  AABCCBBCCBBCCBBCA
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+                 DDDDDDDDD
+              DDDDDDDDDDDDDDD
+           DDDDDDDDDDDDDDDDDDDDD
+          DDDDDDDDDDDDDDDDDDDDDDDD
+             ||        ||        ||
+             ||        ||        ||
+             ||        ||        ||
+         ____||____ ____||____ ____||____
+        /____/____/\/____/____/\/____/____\
+       /____/____/\/____/____/\/____/____/\
+      /____/____/\/____/____/\/____/____/\
+     /____/____/\/____/____/\/____/____/\
+     """
+        self.b = r"""
+Budapest                      AAAA
+                           AAAAABBAAAA
+                        AAAAABBBBCCBBAAAA
+                     AAAAABBBCCCCDDCCBBBAAAA
+                  AAAAABBCCCCDDDDEEDDDCCCBBBAAAA
+               AAAAABBCCCDDDDEEEEFFEEEEDDDCCCBBBAAAA
+            AAAAABBCCCDDDDEEEEFFFFGGFFFFEEEEDDDCCCBBBAAAA
+          AAAABBCCCDDDDEEEEFFFFGGGHHGGGFFFFEEEEDDDCCCBBBAAA
+        AAABBCCCDDDDEEEEFFFFGGGHHHIIHHHGGGFFFFEEEEDDDCCCBBBAA
+      AAABBCCCDDDDEEEEFFFFGGGHHHIIJJIIHHHGGGFFFFEEEEDDDCCCBBBAA
+     AABBCCCDDDDEEEEFFFFGGGHHHIIJJKKJJIIHHHGGGFFFFEEEEDDDCCCBBBA
+    AABBCCCDDDDEEEEFFFFGGGHHHIIJJKKLLKKJJIIHHHGGGFFFFEEEEDDDCCCBA
+    ABBCCCDDDDEEEEFFFFGGGHHHIIJJKKLLMMLLKKJJIIHHHGGGFFFFEEEEDDDCCB
+   ABBCCCDDDDEEEEFFFFGGGHHHIIJJKKLLMMMMLLKKJJIIHHHGGGFFFFEEEEDDDCCB
+   BBCCCDDDDEEEEFFFFGGGHHHIIJJKKLLMMMMMMMLLKKJJIIHHHGGGFFFFEEEEDDDCC
+   BBCCCDDDDEEEEFFFFGGGHHHIIJJKKLLMMMMMMMMLLKKJJIIHHHGGGFFFFEEEEDDDCC
+   BBCCCDDDDEEEEFFFFGGGHHHIIJJKKLLMMMMMMMMLLKKJJIIHHHGGGFFFFEEEEDDDCC
+   BBCCCDDDDEEEEFFFFGGGHHHIIJJKKLLMMMMMMMMLLKKJJIIHHHGGGFFFFEEEEDDDCC
+   BBCCCDDDDEEEEFFFFGGGHHHIIJJKKLLMMMMMMMMLLKKJJIIHHHGGGFFFFEEEEDDDCC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~   ~~~~      ~~~~~~        ~~~~~~       ~~~~      ~~~~   ~~~
+~~~        ~~~~~~~~~~~~    ~~~~~~~~~~~~~    ~~~~~~~~~~~~    ~~~~
+~~~~   ~~~~~~~~~~~~~~~~    ~~~~~~~~~~~~~    ~~~~~~~~~~~~~   ~~~~
+~~~~~~~~~~~~   ~~~~~~~~~~~~~   ~~~~~~~~~~~~~   ~~~~~~~~~~~~~~~~
+                DDDD        DDDD        DDDD
+              DDDDDDDD    DDDDDDDD    DDDDDDDD
+            DDDDEEEEED  DDDDEEEEED  DDDDEEEEED
+           DDDEFFFFEED DDDEFFFFEED DDDEFFFFEED
+           DDEFGGGFEDD DDEFGGGFEDD DDEFGGGFEDD
+           DDEFGHHGFDD DDEFGHHGFDD DDEFGHHGFDD
+            DDFFHHFFDD  DDFFHHFFDD  DDFFHHFFDD
+              DDFFFFDD    DDFFFFDD    DDFFFFDD
+                 ||            ||            ||
+                 ||            ||            ||
+           _______||___________||___________||_______
+          /_______/___________/__\_________/_______/\
+         /_______/___________/____\_______/_______/  \
+        /_______/___________/______\_____/_______/    \
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~ ~~~~~~~ ~~~~~~~~ ~~~~~ ~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~ ~~~~~"""
+        self.c = r"""
+        Cairo
+        
+                 AAAA               BBBB                AAAA
+                AAAAAA             BBBBBBB             AAAAAA
+               AAAAABAA           BBBBCCCBBB           AAAAABAA
+              AAAAACCBAAA       BBBCCDDDDCCBBB       AAAAACCBAAA
+             AAAAADDDDAAAA     BBCCDDDEEDDDCCBB     AAAAADDDDAAAA
+            AAAAEEEEAAA      BBCCDDDEFFFFEDDDCCBB      AAAAEEEEAAA
+           AAAFFFAA        BBCCDDDEFFGGFFEDDDCCBB        AAAFFFAA
+          AAAGGAA        BBCCDDDEFFGGHHGGFFEDDDCCBB        AAAGGAA
+         AAHHAA        BBCCDDDEFFGGHHIIHHGGFFEDDDCCBB        AAHHAA
+        AAIIAA         BBCCDDDEFFGGHHIIJJIIHHGGFFEDDDCCBB         AAIIAA
+       AAJJAA          BBCCDDDEFFGGHHIIJJKKIIHHGGFFEDDDCCBB          AAJJAA
+      AAKKAA           BBCCDDDEFFGGHHIIJJKKLLJJIIHHGGFFEDDDCCBB           AAKKAA
+        """
+        self.d = r"""
+        Delhi
+        
+        """
+
+"""
+
+def encode_file(input_file, output_file):
+    with open(input_file, "rb") as f:
+        data = f.read()
+
+    encoded_data = base64.b64encode(data)
+
+    with open(output_file, "wb") as f:
+        f.write(encoded_data)
+"""
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python encode.py input_file output_file")
+        sys.exit(1)
+
+    print("File encoded successfully")
