@@ -9,6 +9,7 @@ Class and function started
 # ============================================ #
 
 import sys
+import os
 
 # ============================================ #
 # //      Global variable declarations      // #
@@ -17,7 +18,7 @@ import sys
 __author__ = "Samuel Piccolo", "Nicholas Constantin"
 __copyright__ = "Copyright 2026, Samuel Piccolo & Nicholas Constantin"
 __licence__ = "MIT"
-__version__ = "0.1"
+__version__ = "1.0"
 
 
 # ============================================ #
@@ -614,7 +615,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                        \LON/
                         \LO/
                          \/        
-        """, """
+        """, r"""
         Machu Picchu
                     /\        /\        /\
                    /MA\      /MA\      /MA\
@@ -655,7 +656,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |CHUPICCHUMAS    CHUPICCHUMAS    CHUPICCHUMAS    CHUPICCHUMA|
 |HUPICCHUMAS     HUPICCHUMAS     HUPICCHUMAS     HUPICCHUMAS|
 |___________________________________________________________|
-        """, """
+        """, r"""
         Nairobi
 
                                              /\
@@ -688,7 +689,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |INAIROBINAIROBINAIROBINAIROBINAIROBINAIROBINAIROBINAIROBINAIRO|
 |______________________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        """, """
+        """, r"""
         Osaka
                             /\
                            /OS\
@@ -755,7 +756,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                         \OSA/
                          \O/
                           V
-        """, """
+        """, r"""
         Paris
                               /\
                              /PA\
@@ -800,7 +801,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
  |ISPARISPARISPARISPARISPARISPARISPARISPARISPARISPARISPARISPAR|
  |SPARISPARISPARISPARISPARISPARISPARISPARISPARISPARISPARISPAR I|
  |_____________________________________________________________|
-        """, """
+        """, r"""
         Qindao
                               /=\
                              /===\
@@ -864,7 +865,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
       \ZHANQIA  \ZHANQIAOZHANQIAOZHANQIA/  ZHANQIA/
        \ZHANQIAO  \ZHANQIAOZHANQIAOZHAN/  ZHANQIAO/
         \__________\__________________/__________/
-        """, """
+        """, r"""
         Rome
                     ___________________________________________
                    /ROMEROМЕROMEROМЕROMEROМЕROMEROМЕROMEROMER\
@@ -911,7 +912,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
       |ROМЕROMEROМЕROMEROМЕROMEROМЕROMEROМЕROMEROМЕROMEROМЕROMEROМЕ|
       |_____________________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        """, """
+        """, r"""
         Shangai
                               *
                              *S*
@@ -979,7 +980,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
          |HAISHANGHAISHANGHAISHANGHAISHANGHAISHANGHAI|
          |___________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        """,  """
+        """,  r"""
         Tanzania
                                    /\
                                   /KI\
@@ -1032,7 +1033,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |ILIMANJAROKILIMANJАROKILIMANJАROKILIMAN|
 |____________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
-        """, """
+        """, r"""
         Ushuaia
                     /\                    /\
                    /US\                  /US\
@@ -1086,7 +1087,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                 \USHUAIAUSHUА/    \USHUAIAUSHUА/
                  \USHUAIAUSH/      \USHUAIAUSH/
                   \USHUAIAU/                
-        """, """
+        """, r"""
         Venice
                     /\      /\      /\      /\      /\
                    /VE\    /VE\    /VE\    /VE\    /VE\
@@ -1127,7 +1128,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
   ~~  ~~~\VENI/~~~ ~~~  \VENI/ ~~~  ~~~\VENI/~~~  ~~~\VENI/  ~~~  ~~
  ~~~       \VE/      ~~~  \VE/  ~~~      \VE/  ~~~     \VE/    ~~~
 ~~          \/         ~~~  \/  ~~~       \/    ~~~      \/      ~~~        
-        """, """
+        """, r"""
         Wroclaw
                     /\              /\
                    /WR\            /WR\
@@ -1173,7 +1174,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
    |CLAWWROCLAWWROCLAWWROCLAWWROCLAWWROCLAWWROCLAWWR|
    |________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        """, """
+        """, r"""
         Xi’an
                     /\              /\              /\
                    /XI\            /XI\            /XI\
@@ -1223,7 +1224,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |NXIANXIANXIANXIANXIANXIANXIANXIANXIANXIANXIANXIANXIANXIANXIANXIANXIANXIAN|
 |___________________________________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
-        """, """
+        """, r"""
         Yangon
                               *
                              *S*
@@ -1278,7 +1279,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |SHWEDAGO|   |SHWEDAGO|          |SHWEDAGO|    |SHWEDAGO|
 |_________|  |_________|          |_________|  |_________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         
-        """, """
+        """, r"""
          Zhengzhou
                     /\              /\
                    /SH\            /SH\
@@ -1323,19 +1324,26 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |____________________________________________________|
         """)
     def __init__(self, txt):
-    self.txt = txt
-    self.encoded_images = []
+        self.txt = txt
+        self.encoded_images = []
 
-    for char in txt:
-        c = char.lower()
-        if c in Encoder._char_index:
-            idx = Encoder._char_index[c]
-            self.encoded_images.append(Encoder.images[idx])
-        else:
-            # Spaces, punctuation, digits
-            self.encoded_images.append(None)
-        
-        
+        for char in txt:
+            c = char.lower()
+            if c in Encoder._char_index:
+                idx = Encoder._char_index[c]
+                self.encoded_images.append(Encoder.images[idx])
+            else:
+                # Spaces, punctuation, digits
+                self.encoded_images.append(None)
+
+
+
+    def encode(self):
+        result = []
+        for char, img in zip(self.txt, self.encoded_images):
+            if img is not None:
+                result.append((char.lower(), img))
+        return result
 
 # ============================================ #
 # //             main() Function            // #
