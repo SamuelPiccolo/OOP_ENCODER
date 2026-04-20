@@ -14,13 +14,10 @@ import sys
 # //      Global variable declarations      // #
 # ============================================ #
 
-__author__ = "<AUTHOR NAME>"
-__copyright__ = "Copyright <YEAR>, <INSTITUTION>"
-__licence__ = "<LICENCE, i.e. European Union Public Licence or Creative Commons Licence>"
-__version__ = "<VERSION OF PROGRAM>"
-__program__ = sys.argv[0][2:] if (sys.argv[0][:2] == "./") else sys.argv[0]
-OTHER = "OTHER GLOBAL DECLARATIONS HERE"
-
+__author__ = "Samuel Piccolo", "Nicholas Constantin"
+__copyright__ = "Copyright 2026, Samuel Piccolo & Nicholas Constantin"
+__licence__ = "MIT"
+__version__ = "0.1"
 
 
 # ============================================ #
@@ -36,7 +33,7 @@ OTHER = "OTHER GLOBAL DECLARATIONS HERE"
 class Encoder: 
     #Starting a list of characters
     Character = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    #Starting a List of possibilities
+    _char_index = {ch: i for i, ch in enumerate(Character)}
     images= (r"""
         Amsterdam
                            AAAAABBBBBBBAAAAA
@@ -1326,24 +1323,62 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |____________________________________________________|
         """)
     def __init__(self, txt):
-        self.txt = txt
-        First = txt[0] #Grabbing FirstCharacter
-        for i, j in enumerate(Character): #Finding which image to use
-            if i == First.lower:
-                Index = i
-                break
-        img = images[Index] #Using index to select image
+    self.txt = txt
+    self.encoded_images = []
+
+    for char in txt:
+        c = char.lower()
+        if c in Encoder._char_index:
+            idx = Encoder._char_index[c]
+            self.encoded_images.append(Encoder.images[idx])
+        else:
+            # Spaces, punctuation, digits
+            self.encoded_images.append(None)
         
         
 
-
-# -------------------------------------------- #
-# //            main() Function             // #
-# -------------------------------------------- #
+# ============================================ #
+# //             main() Function            // #
+# ============================================ #
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python encode.py input_file output_file")
+        print(f"Usage: python {__program__} <input_file> <output_file>")
         sys.exit(1)
 
-    print("File encoded successfully")
+    input_file  = sys.argv[1]
+    output_file = sys.argv[2]
+
+    # --- Read input file ---
+    if not os.path.exists(input_file):
+        print(f"Error: input file '{input_file}' not found.")
+        sys.exit(1)
+
+    with open(input_file, "r", encoding="utf-8") as f:
+        message = f.read().strip()
+
+    if not message:
+        print("Error: input file is empty.")
+        sys.exit(1)
+
+    # --- Encode the message ---
+    encoder = Encoder(message)
+    encoded = encoder.encode()
+
+    if not encoded:
+        print("Error: no encodable characters found (letters only).")
+        sys.exit(1)
+
+    # --- Write output file ---
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(f"Encoded message: '{message}'\n")
+        f.write(f"Total encoded characters: {len(encoded)}\n")
+        f.write("=" * 60 + "\n\n")
+        for char, img in encoded:
+            f.write(f"[ Character: '{char}' ]\n")
+            f.write(img)
+            f.write("\n" + "-" * 60 + "\n")
+
+    print(f"File encoded successfully")
+    print(f"  Input : {input_file}  ({len(message)} chars)")
+    print(f"  Output: {output_file} ({len(encoded)} images written)")
