@@ -18,7 +18,7 @@ import os
 __author__ = "Samuel Piccolo", "Nicholas Constantin"
 __copyright__ = "Copyright 2026, Samuel Piccolo & Nicholas Constantin"
 __licence__ = "MIT"
-__version__ = "1.1"
+__version__ = "1.2"
 
 
 # ============================================ #
@@ -1407,12 +1407,11 @@ if __name__ == "__main__":
 
     # --- Write output file ---
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write(f"Encoded message: '{message}'\n")
-        f.write(f"Total encoded characters: {len(encoded)}\n")
-        f.write("=" * 60 + "\n\n")
+        f.write(f"Total encoded characters: {len(encoded)} Good Luck decoding!\n")
+        f.write("=" * 100 + "\n\n")
         for char, img in encoded:
             f.write(img)
-            f.write("\n" + "-" * 60 + "\n")
+            f.write("\n" + "-" * 100 + "\n")
 
     print(f"File encoded successfully")
     print(f"  Input : {input_file}  ({len(message)} chars)")
