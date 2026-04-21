@@ -1,6 +1,6 @@
 
 """
-Encoder File 04/14/2026
+Encoder File 21/14/2026
 Implementation of library and lists to be used
 Class and function started
 """
@@ -18,7 +18,7 @@ import os
 __author__ = "Samuel Piccolo", "Nicholas Constantin"
 __copyright__ = "Copyright 2026, Samuel Piccolo & Nicholas Constantin"
 __licence__ = "MIT"
-__version__ = "1.0"
+__version__ = "1.1"
 
 
 # ============================================ #
@@ -34,9 +34,10 @@ __version__ = "1.0"
 class Encoder: 
     #Starting a list of characters
     Character = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    Special_C = [" ", "1","2","3","4","5","6","7","8","9","0","!","?",">","<", ",", ".","@","£","$","%","^","~","&","*","(",")","_","-","+","=","/"]
     _char_index = {ch: i for i, ch in enumerate(Character)}
     images= (r"""
-        Amsterdam
+        A
                            AAAAABBBBBBBAAAAA
                       AAAAABBBBCCCCCCCCBBBBAAAAA
                  AAAAABBBCCCDDDEEEEEEEDDDCCBBBAAAAA
@@ -91,7 +92,7 @@ EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOO
       /____/____/\/____/____/\/____/____/\
      /____/____/\/____/____/\/____/____/\
      """, r"""
-Budapest                      AAAA
+B                              AAAA
                            AAAAABBAAAA
                         AAAAABBBBCCBBAAAA
                      AAAAABBBCCCCDDCCBBBAAAA
@@ -131,7 +132,7 @@ Budapest                      AAAA
         /_______/___________/______\_____/_______/    \
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~ ~~~~~~~ ~~~~~~~~ ~~~~~ ~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~ ~~~~~""", r"""
-        Cairo
+        C
         
                  AAAA               BBBB                AAAA
                 AAAAAA             BBBBBBB             AAAAAA
@@ -146,7 +147,7 @@ Budapest                      AAAA
        AAJJAA          BBCCDDDEFFGGHHIIJJKKIIHHGGFFEDDDCCBB          AAJJAA
       AAKKAA           BBCCDDDEFFGGHHIIJJKKLLJJIIHHGGFFEDDDCCBB           AAKKAA
         """, r"""
-        Delhi
+        D
                                 Q
                                QQQ
                               QQQQQ
@@ -190,7 +191,7 @@ Budapest                      AAAA
  HHHIIJJKKLLLLNNNNNNNNNNNNNNNNNNNNNNNNNNLLKKJJIIHHH
 HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
         """, r"""
-        Edinburgh
+        E
                          /\
                         /  \
               /\       /EDIN\       /\
@@ -206,7 +207,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         """, r"""
-        Fiji
+        F
                               /\
                              /FI\
                             /FIJI\
@@ -244,7 +245,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
             \JIFIJIFIJ\JIFIJIFIJIFIJIFIJIFIJIFIJIFI/JIFIJ/
              \__________\________________________/__________/
         """, r"""
-        Granada
+        G
                     /\          /\          /\
                    /AL\        /AL\        /AL\
                   /ALHА\      /ALHA\      /ALHA\
@@ -296,7 +297,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                   \A/                                            \A/
                    V                                              V        
         """, r"""
-        Hawaii
+        H
                                   /\
                                  /HA\
                                 /HAWA\
@@ -346,7 +347,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                 \                   \HA/               /
                  \___________________\/_______________/        
         """, r"""
-        Ireland
+        I
                               ***
                              *HOO*
                             *HOOKLI*
@@ -412,7 +413,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
        \HOOKLIGT  \HOOKLIGHTHOUSEHOOKLIGHT/  HOOKLIGT/
         \__________\____________________/__________/
         """, r"""
-        Jakarta
+        J
                                  *
                                 *M*
                                *MON*
@@ -475,7 +476,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
          \       \MONASMONAS/              /
           \_______\MONAS/__________________/        
         """, r"""
-        Kefalona
+        K
                     ___________________________________
                    /MELISSANIMELISSANIMELISSANIMELIS   \
                   /MELISSANIMELISSANIMELISSANIMELISSA   \
@@ -538,7 +539,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                         \M/
                          V        
         """, r"""
-        London
+        L
                           |BB|
                          |BIGI|
                         |BIGBEN|
@@ -616,7 +617,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                         \LO/
                          \/        
         """, r"""
-        Machu Picchu
+        M
                     /\        /\        /\
                    /MA\      /MA\      /MA\
                   /MACH\    /MACH\    /MACH\
@@ -657,7 +658,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |HUPICCHUMAS     HUPICCHUMAS     HUPICCHUMAS     HUPICCHUMAS|
 |___________________________________________________________|
         """, r"""
-        Nairobi
+        N
 
                                              /\
                 /\          /\              /NA\
@@ -690,7 +691,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |______________________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         """, r"""
-        Osaka
+        O
                             /\
                            /OS\
                           /OSAK\
@@ -757,7 +758,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                          \O/
                           V
         """, r"""
-        Paris
+        P
                               /\
                              /PA\
                             /PAR\
@@ -802,7 +803,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
  |SPARISPARISPARISPARISPARISPARISPARISPARISPARISPARISPARISPAR I|
  |_____________________________________________________________|
         """, r"""
-        Qindao
+        Q
                               /=\
                              /===\
                             /=====\
@@ -866,7 +867,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
        \ZHANQIAO  \ZHANQIAOZHANQIAOZHAN/  ZHANQIAO/
         \__________\__________________/__________/
         """, r"""
-        Rome
+        R
                     ___________________________________________
                    /ROMEROМЕROMEROМЕROMEROМЕROMEROМЕROMEROMER\
                   /EROМЕROMEROМЕROMEROМЕROMEROМЕROMEROМЕROMERO\
@@ -913,7 +914,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
       |_____________________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         """, r"""
-        Shangai
+        S
                               *
                              *S*
                             *SHA*
@@ -981,7 +982,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
          |___________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         """,  r"""
-        Tanzania
+        T
                                    /\
                                   /KI\
                                  /KILI\
@@ -1034,7 +1035,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |____________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
         """, r"""
-        Ushuaia
+        U
                     /\                    /\
                    /US\                  /US\
                   /USHУ\                /USHU\
@@ -1088,7 +1089,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                  \USHUAIAUSH/      \USHUAIAUSH/
                   \USHUAIAU/                
         """, r"""
-        Venice
+        V
                     /\      /\      /\      /\      /\
                    /VE\    /VE\    /VE\    /VE\    /VE\
                   /VENI\  /VENI\  /VENI\  /VENI\  /VENI\
@@ -1129,7 +1130,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
  ~~~       \VE/      ~~~  \VE/  ~~~      \VE/  ~~~     \VE/    ~~~
 ~~          \/         ~~~  \/  ~~~       \/    ~~~      \/      ~~~        
         """, r"""
-        Wroclaw
+        W
                     /\              /\
                    /WR\            /WR\
                   /WROC\          /WROC\
@@ -1175,7 +1176,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
    |________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         """, r"""
-        Xi’an
+        X
                     /\              /\              /\
                    /XI\            /XI\            /XI\
                   /XIAN\          /XIAN\          /XIAN\
@@ -1225,7 +1226,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |___________________________________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
         """, r"""
-        Yangon
+        Y
                               *
                              *S*
                             *SHW*
@@ -1280,7 +1281,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |_________|  |_________|          |_________|  |_________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         
         """, r"""
-         Zhengzhou
+         Z
                     /\              /\
                    /SH\            /SH\
                   /SHAO\          /SHAO\
@@ -1325,18 +1326,45 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
         """)
     def __init__(self, txt):
         self.txt = txt
-        self.encoded_images = []
+        self.encoded_images = []        #Characters List creation
 
         for char in txt:
             c = char.lower()
-            if c in Encoder._char_index:
+            if c in Encoder._char_index:            #Selecting which character
                 idx = Encoder._char_index[c]
-                self.encoded_images.append(Encoder.images[idx])
+                self.encoded_images.append(Encoder.images[idx])        #Selecting what img to use with what character
+            elif c in self.Special_C:
+                L_img = list(Encoder.images[0])
+                A_count = 0
+                i = 0
+                while i < len(L_img):
+                    if L_img[i] == "A":
+                        A_count += 1
+                        if A_count == 5:
+                            L_img[i] = c
+                            self.encoded_images.append("".join(L_img))
+                            break
+                    i += 1
+                else:
+                    self.encoded_images.append(None)
             else:
-                # Spaces, punctuation, digits
+                # Non recognizable characters
                 self.encoded_images.append(None)
+        k = 0
+        n = len(self.encoded_images)
 
+        for j in range(n):
+            if k == 0:
+                if j + 3 < n:
+                    self.encoded_images[j], self.encoded_images[j+3] = self.encoded_images[j+3], self.encoded_images[j]
+            elif k == 1:
+                if j + 1 < n:
+                    self.encoded_images[j], self.encoded_images[j+1] = self.encoded_images[j+1], self.encoded_images[j]
+            elif k == 4:
+                if j - 3 >= 0:
+                    self.encoded_images[j], self.encoded_images[j-3] = self.encoded_images[j-3], self.encoded_images[j]
 
+            k = (k + 1) % 5
 
     def encode(self):
         result = []
@@ -1383,7 +1411,6 @@ if __name__ == "__main__":
         f.write(f"Total encoded characters: {len(encoded)}\n")
         f.write("=" * 60 + "\n\n")
         for char, img in encoded:
-            f.write(f"[ Character: '{char}' ]\n")
             f.write(img)
             f.write("\n" + "-" * 60 + "\n")
 
