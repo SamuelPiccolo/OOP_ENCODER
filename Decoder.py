@@ -1,19 +1,70 @@
-import sys
-import base64
+###This project uses cryptography which is a substitution using a cipher
+###which has been made into a class with the use of a password
+###which determines the use of the correct shift if correct
+###within the ascii lanmark images and outputs a decrypted
+###file drom the inherited classes
+import sys###module imports
+import os###checks the file if it exists
 
-def decode_file(input_file, output_file):
-    with open(input_file, "rb") as f:
-        data = f.read()
+class Decoder:###matches the emcoders characters while matching the images to convert acsi
+    Character=[
+        "a","b","c","d","e","f","g","h","i","j","k","l","m",
+        "n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
-    decoded_data = base64.b64decode(data)
+    ###it matches the encoder image/ascii
+    images= None###placeholder needed before decoding
 
-    with open(output_file, "wb") as f:
-        f.write(decoded_data)
+    def __init__(self):
+        if Decoder.images is None:
+            raise RuntimeError("the ecoder imgaes_tmp wasnt initialised ")
 
-if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python decode.py input_file output_file")
+        ###builds a reverse lookup ascii image to character
+        self.image_to_character= {}
+        for character, imgage in zip(Decoder.Character, Decoder.imgaes):
+            key = image.strip()   
+            self.image_to_character[key] = character
+
+    def decode(self, encoded_text):
+        decoded_characters = []
+        ###it splits the ecoded file into blocks
+        blocks = encoded_text.split("-" * 100) 
+        for block in blocks:
+            block = block.strip()
+            ###skips blocks that hold no value
+            if not block or block.startswith("Encoded message"):
+                continue
+
+            lines = block.splitlines()###gets the ascii data out of the ascii image while ignoring the header
+            ascii_art = "\n".join(lines[1:]).strip()   
+
+            if ascii_art in self.image_to_character:
+                decoded_characters.append(self.image_to_character[ascii_art])
+            else:
+                decoded_characters.append("?")###in case it doesnt recognise the character in the block
+
+        return "".join(decoded_characters)
+
+
+if __name__ =="__main__":
+    if len(sys.argv) != 2:
+        print("usage: python _decoder.py <_encoded_file>")
         sys.exit(1)
 
-    decode_file(sys.argv[1], sys.argv[2])
-    print("File decoded successfully")
+    _encoded_file = sys.argv[1]####checks the encoded files existance
+
+    if not os.path.exists(_encoded_file):
+        print(f"Error:The file '{_encoded_file}'was not found.")
+        sys.exit(1)###reads encoced file only
+
+    with open(_encoded_file, "r", encoding="utf-8") as f:
+        encoded_data = f.read()###imports encoder nd reads it
+    
+    ###copies encoder.imgaes_tmp to decoder.imgaes_tmp and makes sure they are equal
+    from encoder import Encoder
+    Decoder.images = Encoder.images
+    ###decodes the contents of the encoded file
+    decoder = Decoder()
+    message = decoder.decode(encoded_data)
+
+    print("Decoded Message:")
+    print(message)
