@@ -1,0 +1,65 @@
+import sys###module imports
+import os###checks the file if it exists
+
+class Decoder:###matches the emcoders characters while matching the images to convert acsi
+    Character=[
+        "a","b","c","d","e","f","g","h","i","j","k","l","m",
+        "n","o","p","q","r","s","t","u","v","w","x","y","z"]
+
+    ###it matches the encoder image/ascii
+    imgaes_tmp = Encoder_images_COPY = None###placeholder needed before decoding
+
+    def __init__(self):
+        if Decoder.imgaes_tmp is None:
+            raise RuntimeError("the ecoder imgaes_tmp wasnt initialised ")
+
+        ###builds a reverse lookup ascii image to character
+        self.image_to_character= {}
+        for character, imgage in zip(Decoder.Character, Decoder.imgaes_tmp):
+            key = image.strip()   
+            self.image_to_character[key] = ch.upper
+
+    def decode(self, encoded_text):
+        decoded_characters_val = []
+        ###it splits the ecoded file into blocks
+        blocks = encoded_text.split("-" * 60) 
+        for block in blocks:
+            block = block.strip()
+            ###skips blocks that hold no value
+            if not block or block.startswith("Encoded message"):
+                continue
+
+            lines = block.splitlines()###gets the ascii data out of the ascii image while ignoring the header
+            ascii_art = "\n".join(lines[1:]).strip()   
+
+            if ascii_art in self.image_to_character:
+                decoded_characters.append(self.image_to_character[ascii_art])
+            else:
+                decoded_characters.append("?")###in case it doesnt recognise the character in the block
+
+        return "".join(decoded_characters)
+
+
+if __name__ =="__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python _decoder.py &lt;_encoded_file&gt;")
+        sys.exit(1)
+
+    _encoded_file = sys.argv[1]####checks the encoded files existance
+
+    if not os.path.exists(_encoded_file):
+        print(f"Error:The file '{_encoded_file}'was not found.")
+        sys.exit(1)###reads encoced file only
+
+    with open(_encoded_file, "r", encoding="utf-8") as f:
+        encoded_data = f.read()###imports encoder nd reads it
+    
+    ###copies encoder.imgaes_tmp to decoder.imgaes_tmp and makes sure they are equal
+    from encoder import Encoder
+    Decoder.imgaes = Encoder.imgaes
+    ###decodes the contents of the encoded file
+    decoder = Decoder()
+    message = decoder.decode(encoded)
+
+    print("Decoded Message:")
+    print(mesage)
