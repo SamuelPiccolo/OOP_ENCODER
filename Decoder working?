@@ -1,3 +1,8 @@
+###This project uses cryptography which is a substitution using a cipher
+###which has been made into a class with the use of a password
+###which determines the use of the correct shift if correct
+###within the ascii lanmark images and outputs a decrypted
+###file drom the inherited classes
 import sys###module imports
 import os###checks the file if it exists
 
