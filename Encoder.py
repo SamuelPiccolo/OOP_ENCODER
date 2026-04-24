@@ -1,6 +1,6 @@
 
 """
-Encoder File 21/14/2026
+Encoder File 24/04/2026
 Implementation of library and lists to be used
 Class and function started
 """
@@ -18,7 +18,7 @@ import os
 __author__ = "Samuel Piccolo", "Nicholas Constantin"
 __copyright__ = "Copyright 2026, Samuel Piccolo & Nicholas Constantin"
 __licence__ = "MIT"
-__version__ = "1.2"
+__version__ = "1.3"
 
 
 # ============================================ #
@@ -37,7 +37,7 @@ class Encoder:
     Special_C = [" ", "1","2","3","4","5","6","7","8","9","0","!","?",">","<", ",", ".","@","£","$","%","^","~","&","*","(",")","_","-","+","=","/"]
     _char_index = {ch: i for i, ch in enumerate(Character)}
     images= (r"""
-        A
+         
                            AAAAABBBBBBBAAAAA
                       AAAAABBBBCCCCCCCCBBBBAAAAA
                  AAAAABBBCCCDDDEEEEEEEDDDCCBBBAAAAA
@@ -92,7 +92,7 @@ EEEFFFFGGGHHHIIJJKKKLLLMMMNNNOOOO
       /____/____/\/____/____/\/____/____/\
      /____/____/\/____/____/\/____/____/\
      """, r"""
-B                              AAAA
+                               AAAA
                            AAAAABBAAAA
                         AAAAABBBBCCBBAAAA
                      AAAAABBBCCCCDDCCBBBAAAA
@@ -132,7 +132,7 @@ B                              AAAA
         /_______/___________/______\_____/_______/    \
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~ ~~~~~~~ ~~~~~~~~ ~~~~~ ~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~ ~~~~~""", r"""
-        C
+         
         
                  AAAA               BBBB                AAAA
                 AAAAAA             BBBBBBB             AAAAAA
@@ -147,7 +147,7 @@ B                              AAAA
        AAJJAA          BBCCDDDEFFGGHHIIJJKKIIHHGGFFEDDDCCBB          AAJJAA
       AAKKAA           BBCCDDDEFFGGHHIIJJKKLLJJIIHHGGFFEDDDCCBB           AAKKAA
         """, r"""
-        D
+         
                                 Q
                                QQQ
                               QQQQQ
@@ -191,7 +191,7 @@ B                              AAAA
  HHHIIJJKKLLLLNNNNNNNNNNNNNNNNNNNNNNNNNNLLKKJJIIHHH
 HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
         """, r"""
-        E
+         
                          /\
                         /  \
               /\       /EDIN\       /\
@@ -207,7 +207,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         """, r"""
-        F
+         
                               /\
                              /FI\
                             /FIJI\
@@ -245,7 +245,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
             \JIFIJIFIJ\JIFIJIFIJIFIJIFIJIFIJIFIJIFI/JIFIJ/
              \__________\________________________/__________/
         """, r"""
-        G
+         
                     /\          /\          /\
                    /AL\        /AL\        /AL\
                   /ALHА\      /ALHA\      /ALHA\
@@ -297,7 +297,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                   \A/                                            \A/
                    V                                              V        
         """, r"""
-        H
+         
                                   /\
                                  /HA\
                                 /HAWA\
@@ -347,7 +347,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                 \                   \HA/               /
                  \___________________\/_______________/        
         """, r"""
-        I
+         
                               ***
                              *HOO*
                             *HOOKLI*
@@ -413,7 +413,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
        \HOOKLIGT  \HOOKLIGHTHOUSEHOOKLIGHT/  HOOKLIGT/
         \__________\____________________/__________/
         """, r"""
-        J
+         
                                  *
                                 *M*
                                *MON*
@@ -476,7 +476,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
          \       \MONASMONAS/              /
           \_______\MONAS/__________________/        
         """, r"""
-        K
+         
                     ___________________________________
                    /MELISSANIMELISSANIMELISSANIMELIS   \
                   /MELISSANIMELISSANIMELISSANIMELISSA   \
@@ -539,7 +539,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                         \M/
                          V        
         """, r"""
-        L
+          
                           |BB|
                          |BIGI|
                         |BIGBEN|
@@ -617,7 +617,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                         \LO/
                          \/        
         """, r"""
-        M
+         
                     /\        /\        /\
                    /MA\      /MA\      /MA\
                   /MACH\    /MACH\    /MACH\
@@ -658,7 +658,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |HUPICCHUMAS     HUPICCHUMAS     HUPICCHUMAS     HUPICCHUMAS|
 |___________________________________________________________|
         """, r"""
-        N
+         
 
                                              /\
                 /\          /\              /NA\
@@ -691,7 +691,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |______________________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         """, r"""
-        O
+         
                             /\
                            /OS\
                           /OSAK\
@@ -758,7 +758,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                          \O/
                           V
         """, r"""
-        P
+         
                               /\
                              /PA\
                             /PAR\
@@ -803,7 +803,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
  |SPARISPARISPARISPARISPARISPARISPARISPARISPARISPARISPARISPAR I|
  |_____________________________________________________________|
         """, r"""
-        Q
+         
                               /=\
                              /===\
                             /=====\
@@ -867,7 +867,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
        \ZHANQIAO  \ZHANQIAOZHANQIAOZHAN/  ZHANQIAO/
         \__________\__________________/__________/
         """, r"""
-        R
+         
                     ___________________________________________
                    /ROMEROМЕROMEROМЕROMEROМЕROMEROМЕROMEROMER\
                   /EROМЕROMEROМЕROMEROМЕROMEROМЕROMEROМЕROMERO\
@@ -914,7 +914,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
       |_____________________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         """, r"""
-        S
+         
                               *
                              *S*
                             *SHA*
@@ -982,7 +982,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
          |___________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         """,  r"""
-        T
+         
                                    /\
                                   /KI\
                                  /KILI\
@@ -1035,7 +1035,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |____________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
         """, r"""
-        U
+         
                     /\                    /\
                    /US\                  /US\
                   /USHУ\                /USHU\
@@ -1089,7 +1089,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
                  \USHUAIAUSH/      \USHUAIAUSH/
                   \USHUAIAU/                
         """, r"""
-        V
+         
                     /\      /\      /\      /\      /\
                    /VE\    /VE\    /VE\    /VE\    /VE\
                   /VENI\  /VENI\  /VENI\  /VENI\  /VENI\
@@ -1130,7 +1130,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
  ~~~       \VE/      ~~~  \VE/  ~~~      \VE/  ~~~     \VE/    ~~~
 ~~          \/         ~~~  \/  ~~~       \/    ~~~      \/      ~~~        
         """, r"""
-        W
+         
                     /\              /\
                    /WR\            /WR\
                   /WROC\          /WROC\
@@ -1176,7 +1176,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
    |________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         """, r"""
-        X
+         
                     /\              /\              /\
                    /XI\            /XI\            /XI\
                   /XIAN\          /XIAN\          /XIAN\
@@ -1226,7 +1226,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |___________________________________________________________________________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
         """, r"""
-        Y
+         
                               *
                              *S*
                             *SHW*
@@ -1281,7 +1281,7 @@ HHIIJKKLLLLMMMMOOOOOOOOOOOOOOOOOOOOOOOOMMMMLLKKJIIH
 |_________|  |_________|          |_________|  |_________|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~         
         """, r"""
-         Z
+          
                     /\              /\
                    /SH\            /SH\
                   /SHAO\          /SHAO\
